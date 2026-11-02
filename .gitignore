@@ -1,0 +1,15 @@
+# Build files
+/build/
+/cmake-build-*/
+
+# Generated output
+/output/*
+!/output/.gitkeep
+
+# Compiled files
+*.o
+*.a
+*.so
+
+# Executable
+code2pseudo
