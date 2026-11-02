@@ -1,18 +1,33 @@
 
 #include <iostream>
 #include <string>
+#include "core/source/sourceFile.hpp"
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[])
+{
 
-    if (argc != 2) {
-        std::cerr << "Usage: code2pseudo <input.cpp>\n";
+    if (argc != 2)
+    {
+        std::cerr << "Usage: code2pseudo <path.cpp> eg[test.cpp]\n";
         return 1;
     }
 
-    std::string inputFile = argv[1];
+    SourceFile file;
 
+    file.path = argv[1];
+
+    std::cout << "\033[32m";
     std::cout << "Code2Pseudo Compiler\n";
-    std::cout << "Input file: " << inputFile << '\n';
+    std::cout << "\033[0m";
+    std::cout << "Input file: " << file.path << '\n';
+
+    if (!readSourceFile(file))
+    {
+        std::cout << "can not open " << file.path;
+        return 1;
+    }
+    std::cout << "file content: " << '\n'
+              << file.content;
 
     return 0;
 }

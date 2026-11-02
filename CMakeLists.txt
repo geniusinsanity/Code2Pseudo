@@ -12,7 +12,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(code2pseudo
     compiler/app/main.cpp
+    compiler/core/source/sourceFile.cpp
 )
+
+target_include_directories(code2pseudo PRIVATE compiler)
 
 target_compile_options(code2pseudo
     PRIVATE
