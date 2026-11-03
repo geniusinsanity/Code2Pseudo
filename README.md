@@ -153,17 +153,20 @@ flowchart TD
 
 ### How the current lexer prototype scans input
 
+
 ```mermaid
 flowchart TD
-    A[Start with source text] --> B[Check current position]
-    B --> C{At end of source?}
-    C -- Yes --> D[Stop]
-    C -- No --> E{Can this character start an identifier?}
-    E -- Yes --> F[Read the identifier]
-    E -- No --> G[Read and skip one character]
-    F --> B
-    G --> B
+    A["C++ Source File"] --> B["Source File Reader"]
+    B --> C["Lexer"]
+    C --> D["Identifier Scanning"]
+
+    D -.-> E["Token Stream - Planned"]
+    E -.-> F["Parser - Planned"]
+    F -.-> G["Abstract Syntax Tree - Planned"]
+    G -.-> H["Pseudocode Generator - Planned"]
+    H -.-> I["Pseudocode Output - Planned"]
 ```
+
 
 ## Repository Structure
 
