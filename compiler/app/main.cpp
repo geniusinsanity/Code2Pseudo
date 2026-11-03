@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "core/source/sourceFile.hpp"
+#include "input/cpp/lexer/lexer.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -28,6 +29,29 @@ int main(int argc, char *argv[])
     }
     std::cout << "file content: " << '\n'
               << file.content;
+
+    // creating lexer object
+    Lexer lexer;
+
+lexer.source = file.content;
+
+    std::cout << "All the idfs of this program are: "<< '\n';
+
+//print all the idfs
+while (isAtEnd(lexer) == false) {
+
+    char c = currentChar(lexer);
+
+    if (isIdfStart(c)) {
+
+        std::string word = readIdf(lexer);
+
+        std::cout << "Word: " << word << '\n';
+    }
+    else {
+        readChar(lexer);
+    }
+}
 
     return 0;
 }

@@ -34,7 +34,7 @@ char nextChar(const Lexer &lexer) {
     return ((isAtEnd(lexer)||(lexer.current +1 >= lexer.source.length())))?'\0':lexer.source[lexer.current +1];
 }
 
-char readchar(Lexer &lexer) {
+char readChar(Lexer &lexer) {
 
     if (isAtEnd(lexer)) {
         return '\0';
@@ -61,7 +61,7 @@ bool isIdfStart(char c) {
 
 bool isIdfPart(char c) {
     //affter the first character in the identefire we can use numbers as well
-    return isIdfStart(c)|| c >= '0' && c <= '9'; 
+    return isIdfStart(c)|| (c >= '0' && c <= '9'); 
 }
 
 std::string readIdf(Lexer& lexer) {
