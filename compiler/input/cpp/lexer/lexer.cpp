@@ -68,7 +68,9 @@ std::string readIdf(Lexer& lexer) {
 
     std::string identifier = "";
 
-    if (isAtEnd(lexer)){
+    //add another reading condition to handle edge cases 
+    if (isAtEnd(lexer)||
+        isIdfStart(currentChar(lexer)) == false){
         return identifier;
     }
 
