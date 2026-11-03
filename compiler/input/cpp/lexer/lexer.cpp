@@ -51,6 +51,7 @@ char readchar(Lexer &lexer) {
 }
 
 
+
 bool isIdfStart(char c) {
     // 'a'=87 'b'=88 ...
     return (c >= 'a' && c <= 'z') ||
@@ -63,6 +64,19 @@ bool isIdfPart(char c) {
     return isIdfStart(c)|| c >= '0' && c <= '9'; 
 }
 
-std::string readIdf(Lexer  &lexer){
+std::string readIdf(Lexer& lexer) {
 
+    std::string identifier = "";
+
+    if (isAtEnd(lexer)){
+        return identifier;
+    }
+
+    while (isAtEnd(lexer) == false &&
+           isIdfPart(currentChar(lexer))) {
+
+        identifier += readChar(lexer);
+    }
+
+    return identifier;
 }

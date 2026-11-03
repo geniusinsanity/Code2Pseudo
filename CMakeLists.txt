@@ -13,7 +13,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_executable(code2pseudo
     compiler/app/main.cpp
     compiler/core/source/sourceFile.cpp
-)
+    compiler/input/cpp/lexer/lexer.cpp
+    )
 
 target_include_directories(code2pseudo PRIVATE compiler)
 
