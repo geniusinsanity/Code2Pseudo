@@ -1,4 +1,5 @@
 #include "lexer.hpp"
+#include "tokenType.hpp"
 
 bool isAtEnd(const Lexer &lexer) {
 
@@ -81,4 +82,71 @@ std::string readIdf(Lexer& lexer) {
     }
 
     return identifier;
+}
+
+TokenType classifyWord(const std::string &word) {
+
+    if (word == "int") {
+        return KeywordInt;
+    }
+    if (word == "float") {
+        return KeywordFloat;
+    }
+
+    if (word == "return") {
+        return KeywordReturn;
+    }
+
+    return Identifier;
+}
+
+TokenType classifySymbol(char symbol) {
+
+    if (symbol == '=')return Assign;
+
+    if (symbol == '*')return Multiply;
+    if (symbol == '%')return Mod;
+    if (symbol == '/')return Div;
+
+    if (symbol == '+')return Plus;
+    if (symbol == '-')return Minus;
+
+    if (symbol == '(')return LeftParen;
+
+    if (symbol == ')')return RightParen;
+
+    if (symbol == '{')return LeftBrace;
+
+    if (symbol == '}')return RightBrace;
+
+    if (symbol == ';')return Semicolon;
+
+    return Unknown;
+
+};
+
+
+std::string readNumber(Lexer &lexer) {
+
+    std::string number = "";
+
+    // Checking if the current character can start a number
+    if (isAtEnd(lexer) ||
+        isDigit(!currentChar(lexer))) {
+
+        return number;
+    }
+
+    // read consecutive digits
+    while (!isAtEnd(lexer) &&
+           isDigit(currentChar(lexer))) {
+
+        number += readChar(lexer);
+    }
+
+    return number;
+}
+
+bool isDigit(char c){
+    return c >= '0' && c <= '9';
 }

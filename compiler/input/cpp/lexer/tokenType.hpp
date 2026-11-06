@@ -5,6 +5,7 @@ enum TokenType {
 
     // Keywords
     KeywordInt,
+    KeywordFloat,
     KeywordReturn,
 
     // Names and values
@@ -14,6 +15,11 @@ enum TokenType {
     // Operators
     Equal,
     Plus,
+    Minus,
+    Assign,
+    Multiply,
+    Div,
+    Mod,
 
     // Symbols
     LeftParen,
@@ -23,7 +29,10 @@ enum TokenType {
     Semicolon,
 
     // End of file
-    EndOfFile
+    EndOfFile,
+
+     // Unknown character
+    Unknown
 };
 
 #endif
